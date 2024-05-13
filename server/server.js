@@ -1,9 +1,9 @@
 const express = require('express');
 let dotenv = require('dotenv').config()
-const loggerMiddleware = require('./src/middleware/logger');
-const errorHandler = require('./src/utils/errorHandler');
-const api1Router = require('./src/controllers/api1');
-const connectDB = require("./src/config/db");
+const loggerMiddleware = require('./middleware/logger');
+const errorHandler = require('./utils/errorHandler');
+const api1Router = require('./controllers/api1');
+const connectDB = require("./config/db");
 
 const app = express();
 
