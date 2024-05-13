@@ -4,7 +4,7 @@ const loggerMiddleware = require('./middleware/logger');
 const errorHandler = require('./utils/errorHandler');
 const api1Router = require('./controllers/api1');
 const connectDB = require("./config/db");
-
+const cors = require('cors');
 const app = express();
 
 connectDB();
@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3002;
 
 // Middleware
 app.use(express.json());
-app.use(loggerMiddleware);
+app.use(cors());
 
 // Routes
 app.use('/api1', api1Router);

@@ -4,6 +4,24 @@ const fs = require('fs');
 const path = require('path');
 const { getLoggerConfig } = require('../utils/loggingConfig');
 const Log = require('../models/logs');
+
+router.post('/search', async (req, res) => {
+  try {
+    const { query } = req.body;
+    const logs = await Log.find({
+      $or: [
+        { level: { $regex: query, $options: 'i' } },
+        { log_string: { $regex: query, $options: 'i' } },
+        { 'metadata.source': { $regex: query, $options: 'i' } },
+      ],
+    }).sort({ timestamp: -1 });
+
+    res.json(logs);
+  } catch (error) {
+    console.error('Error searching logs:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
 router.post('/log', async (req, res) => {
   try {
     const logData = req.body;
