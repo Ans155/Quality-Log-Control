@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Container, Grid, TextField, Button } from '@mui/material';
 import axios from 'axios';
 
 const SearchForm = ({ onSearch }) => {
@@ -15,17 +16,27 @@ const SearchForm = ({ onSearch }) => {
   };
 
   return (
-    <div>
+    <Container maxWidth="md" sx={{ mt: 4 }}>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Search logs..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button type="submit">Search</button>
+        <Grid container spacing={2} alignItems="center">
+          <Grid item xs={8}>
+            <TextField
+              fullWidth
+              type="text"
+              label="Search logs..."
+              variant="outlined"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <Button fullWidth variant="contained" color="primary" type="submit">
+              Search
+            </Button>
+          </Grid>
+        </Grid>
       </form>
-    </div>
+    </Container>
   );
 };
 
