@@ -14,3 +14,6 @@
 {"timestamp":"2024-05-13T21:48:22.766Z","level":"hello","log_string":"Sample log message","metadata":{"source":"API 1"}}
 {"timestamp":"2024-05-13T21:50:55.867Z","level":"hello","log_string":"Sample log message","metadata":{"source":"API 1"}}
 {"timestamp":"2024-05-13T22:03:21.904Z","level":"hello","log_string":"Sample log message","metadata":{"source":"API 1"}}
+{"source":"log2","level":"error","logString":"This is a error log"}
+{"metadata":"log2","level":"error","logString":"This is a error log"}
+{"metadata":{"source":"log2"},"level":"error","logString":"This is a error log"}

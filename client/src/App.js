@@ -1,23 +1,18 @@
 import React, { useState } from 'react';
-import SearchForm from './components/SearchForm';
-import LogList from './components/LogList';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import './styles.css';
-import { Typography } from '@mui/material';
+import Home from './Home';
+import AddLogForm from './components/AddLogs';
 function App() {
-  const [logs, setLogs] = useState([]);
-
-  const handleSearch = (data) => {
-    setLogs(data);
-  };
-
   return (
-    <div>
-      <Typography variant="h3" align="center" gutterBottom>
-        Log Ingestor
-      </Typography>
-      <SearchForm onSearch={handleSearch} />
-      <LogList logs={logs} />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/add" element={<AddLogForm/>}/>
+      </Routes>
+    </Router>
+    
   );
 }
 
