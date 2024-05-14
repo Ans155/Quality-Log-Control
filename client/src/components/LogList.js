@@ -33,7 +33,7 @@ const LogList = ({ logs }) => {
                     Message: {log.log_string}
                   </Typography>
                   <Typography variant="body1" component="p">
-                    Source: {log.metadata.source}
+                    Source: {(log.metadata) ?(log.metadata.source) : ""}
                   </Typography>
                 </div>
               </CardContent>

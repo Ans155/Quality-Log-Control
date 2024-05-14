@@ -1,20 +1,29 @@
 import React, { useState } from 'react';
-import { Container, Typography, TextField, Button, Select, MenuItem, FormControl, InputLabel, Grid } from '@mui/material';
+import { Container, Typography, TextField, Button, Select, MenuItem, FormControl, InputLabel, Grid, Snackbar } from '@mui/material';
 import axios from 'axios';
 
 const AddLogForm = () => {
   const [source, setSource] = useState('');
   const [level, setLevel] = useState('');
   const [logString, setLogString] = useState('');
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3002/api1/log', { metadata: {"source": source}, level, logString });
+      await axios.post('http://localhost:3002/api1/log', { metadata: { "source": source }, level, logString });
+      setOpenSnackbar(true); 
 
+      setSource('');
+      setLevel('');
+      setLogString('');
     } catch (error) {
       console.error('Error adding log:', error);
     }
+  };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
   };
 
   return (
@@ -63,6 +72,12 @@ const AddLogForm = () => {
           </Grid>
         </Grid>
       </form>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={3000}
+        onClose={handleCloseSnackbar}
+        message="Log submitted successfully!"
+      />
     </Container>
   );
 };

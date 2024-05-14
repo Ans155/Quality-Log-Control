@@ -13,9 +13,6 @@ const Home = () => {
   };
   return (
     <div>
-        <Typography variant="h3" align="center" gutterBottom>
-        Log Ingestor
-      </Typography>
       <SearchForm onSearch={handleSearch} />
       <LogList logs={logs}/>
     </div>
