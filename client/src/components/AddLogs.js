@@ -11,7 +11,7 @@ const AddLogForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3002/api1/log', { metadata: { "source": source }, level, logString });
+      await axios.post('https://quality-log-control-rr69.onrender.com/api1/log', { metadata: { "source": source }, level, logString });
       setOpenSnackbar(true); 
 
       setSource('');

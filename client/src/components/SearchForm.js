@@ -11,16 +11,16 @@ const SearchForm = ({ onSearch }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Check if end date is greater than or equal to start date
+
     if (endDate && new Date(endDate) < new Date(startDate)) {
       setError('End date must be greater than or equal to start date');
       return;
     }
 
     try {
-      const response = await axios.post('http://localhost:3002/api1/search', { query, startDate, endDate });
+      const response = await axios.post('https://quality-log-control-rr69.onrender.com/api1/search', { query, startDate, endDate });
       onSearch(response.data);
-      setError(''); // Clear any previous errors
+      setError(''); 
     } catch (error) {
       console.error('Error searching logs:', error);
     }

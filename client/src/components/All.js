@@ -10,7 +10,7 @@ const AllLogsPage = () => {
 
     const fetchLogs = async () => {
       try {
-        const response = await axios.get('http://localhost:3002/api1/alllogs');
+        const response = await axios.get('https://quality-log-control-rr69.onrender.com/api1/alllogs');
         setLogs(response.data);
       } catch (error) {
         console.error('Error fetching logs:', error);
